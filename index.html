@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>VirtualBoard</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <!-- Bibliotecas -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+        <script src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
+
+        <!-- Scripts-->
+        <script async defer src="init_backbone.js"></script>
+
+        <!-- HTML Elements tree -->
+        <div class="board" draggable="true">
+            <div class="draggable-item">
+                <span>test</span>
+            </div>
+            <div class="draggable-item">
+                <span>test2</span>
+            </div>
+            <div class="draggable-item">
+                <span>test3</span>
+            </div>
+            <div class="draggable-item">
+                <span>test4</span>
+            </div>
+        </div>
+        <script type="text/javascript">
+            [...document.querySelectorAll(".draggable-item")].forEach(item => makeDraggable(item))
+
+            function makeDraggable(element){
+                var currentOffsetX = 0, currentOffsetY = 0, initialPosX = 0, initialPosY = 0;
+                element.addEventListener("mousedown", dragMouseDown);
+
+                function dragMouseDown(e) {
+                    e = e || window.event;
+                    e.preventDefault();
+                    // get the mouse cursor position at startup:
+                    initialPosX = e.clientX;
+                    initialPosY = e.clientY;
+                    document.addEventListener("mouseup", closeDragElement);
+                    // call a function whenever the cursor moves:
+                    document.addEventListener("mousemove", elementDrag);
+                }
+
+                function elementDrag(e) {
+                    e = e || window.event;
+                    e.preventDefault();
+                    // calculate the new cursor position:
+                    currentOffsetX = initialPosX - e.clientX;
+                    currentOffsetY = initialPosY - e.clientY;
+                    initialPosX = e.clientX;
+                    initialPosY = e.clientY;
+                    // set the element's new position:
+                    element.style.top = (element.offsetTop - currentOffsetY) + "px";
+                    element.style.left = (element.offsetLeft - currentOffsetX) + "px";
+                }
+
+                function closeDragElement() {
+                    // stop moving when mouse button is released:
+                    document.removeEventListener("mouseup", closeDragElement)
+                    document.removeEventListener("mousemove", elementDrag)
+                }
+            }
+        </script>
+    </body>
+</html>

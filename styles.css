@@ -1,0 +1,10 @@
+html, body, .board {
+    height: 100%;
+}
+
+.draggable-item {
+    background-color: aqua;
+    position: absolute;
+    z-index: 9;
+    cursor: move;
+}
