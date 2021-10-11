@@ -11,11 +11,16 @@
     <body>
         <!-- Bibliotecas -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
-        <script src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.1/underscore-umd-min.js"></script>
+        <script src="https://backbonejs.org/backbone.js"></script>
 
         <!-- Scripts-->
         <script async defer src="init_backbone.js"></script>
+        <script async defer src="models/Board.js"></script>
+        <script async defer src="models/Pawn.js"></script>
+        <script async defer src="views/BoardView.js"></script>
+        <script async defer src="views/PawnView.js"></script>
+        
 
         <!-- HTML Elements tree -->
         <div class="board" draggable="true">
@@ -32,43 +37,46 @@
                 <span>test4</span>
             </div>
         </div>
-        <script type="text/javascript">
-            [...document.querySelectorAll(".draggable-item")].forEach(item => makeDraggable(item))
+        <script async defer>
+            window.addEventListener("load", ev => {
+                mainBoard = new Board();
+                [...document.querySelectorAll(".draggable-item")].forEach(item => makeDraggable(item))
 
-            function makeDraggable(element){
-                var currentOffsetX = 0, currentOffsetY = 0, initialPosX = 0, initialPosY = 0;
-                element.addEventListener("mousedown", dragMouseDown);
+                function makeDraggable(element){
+                    var currentOffsetX = 0, currentOffsetY = 0, initialPosX = 0, initialPosY = 0;
+                    element.addEventListener("mousedown", dragMouseDown);
 
-                function dragMouseDown(e) {
-                    e = e || window.event;
-                    e.preventDefault();
-                    // get the mouse cursor position at startup:
-                    initialPosX = e.clientX;
-                    initialPosY = e.clientY;
-                    document.addEventListener("mouseup", closeDragElement);
-                    // call a function whenever the cursor moves:
-                    document.addEventListener("mousemove", elementDrag);
+                    function dragMouseDown(e) {
+                        e = e || window.event;
+                        e.preventDefault();
+                        // get the mouse cursor position at startup:
+                        initialPosX = e.clientX;
+                        initialPosY = e.clientY;
+                        document.addEventListener("mouseup", closeDragElement);
+                        // call a function whenever the cursor moves:
+                        document.addEventListener("mousemove", elementDrag);
+                    }
+
+                    function elementDrag(e) {
+                        e = e || window.event;
+                        e.preventDefault();
+                        // calculate the new cursor position:
+                        currentOffsetX = initialPosX - e.clientX;
+                        currentOffsetY = initialPosY - e.clientY;
+                        initialPosX = e.clientX;
+                        initialPosY = e.clientY;
+                        // set the element's new position:
+                        element.style.top = (element.offsetTop - currentOffsetY) + "px";
+                        element.style.left = (element.offsetLeft - currentOffsetX) + "px";
+                    }
+
+                    function closeDragElement() {
+                        // stop moving when mouse button is released:
+                        document.removeEventListener("mouseup", closeDragElement)
+                        document.removeEventListener("mousemove", elementDrag)
+                    }
                 }
-
-                function elementDrag(e) {
-                    e = e || window.event;
-                    e.preventDefault();
-                    // calculate the new cursor position:
-                    currentOffsetX = initialPosX - e.clientX;
-                    currentOffsetY = initialPosY - e.clientY;
-                    initialPosX = e.clientX;
-                    initialPosY = e.clientY;
-                    // set the element's new position:
-                    element.style.top = (element.offsetTop - currentOffsetY) + "px";
-                    element.style.left = (element.offsetLeft - currentOffsetX) + "px";
-                }
-
-                function closeDragElement() {
-                    // stop moving when mouse button is released:
-                    document.removeEventListener("mouseup", closeDragElement)
-                    document.removeEventListener("mousemove", elementDrag)
-                }
-            }
+            })
         </script>
     </body>
 </html>
