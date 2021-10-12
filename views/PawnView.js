@@ -26,13 +26,14 @@ class PawnView extends Backbone.View {
 
     render(){
         this.$el.html(this.appliedTemplate());
-        makeDraggable(this.$el)
+        this.makeDraggable(this.$el[0])
         return this;
     }
 
     makeDraggable(element){
         var currentOffsetX = 0, currentOffsetY = 0, initialPosX = 0, initialPosY = 0;
         element.addEventListener("mousedown", dragMouseDown);
+        let _this = this;
 
         function dragMouseDown(e) {
             e = e || window.event;
@@ -54,8 +55,11 @@ class PawnView extends Backbone.View {
             initialPosX = e.clientX;
             initialPosY = e.clientY;
             // set the element's new position:
-            element.style.top = (element.offsetTop - currentOffsetY) + "px";
-            element.style.left = (element.offsetLeft - currentOffsetX) + "px";
+            let top = (element.offsetTop - currentOffsetY) + "px";
+            element.style.top = top
+            let left = (element.offsetLeft - currentOffsetX) + "px";
+            element.style.left = left
+            //_this.model.updateOffset(top, left)
         }
 
         function closeDragElement() {

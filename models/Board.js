@@ -6,4 +6,8 @@ class Board extends Backbone.Model {
         //create board 'drawable' part (where to put the icons)
         //
     }
+
+    pawns(){
+        return this.get("pawns")
+    }
 }
