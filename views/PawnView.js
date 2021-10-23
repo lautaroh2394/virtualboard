@@ -5,25 +5,22 @@ class PawnView extends Backbone.View {
         this.className = 'draggable-item'
     }
 
-    getTemplate(){
+    template(){
         return "<span><%= name %></span>"
     }
 
     appliedTemplate(){
-        let params = {
+        const params = {
             name: this.model.get('name')
         }
-        let template = this.getTemplate();
-        let html = _.template(template)(params)
-
-        return html
+        const template = this.template();
+        return _.template(template)(params)
     }
 
-    getTemplateParams(){
-        let params = {
+    templateParams(){
+        return {
             name: this.model.get('name')
         }
-        return params
     }
 
     invalid(opts){
@@ -41,9 +38,9 @@ class PawnView extends Backbone.View {
     }
 
     makeDraggable(element){
-        var currentOffsetX = 0, currentOffsetY = 0, initialPosX = 0, initialPosY = 0;
+        let currentOffsetX = 0, currentOffsetY = 0, initialPosX = 0, initialPosY = 0;
         element.addEventListener("mousedown", dragMouseDown);
-        let _this = this;
+        const _this = this;
 
         function dragMouseDown(e) {
             e = e || window.event;

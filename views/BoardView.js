@@ -1,5 +1,5 @@
 import {Board} from '../models/Board.js'
-import {ButtonView} from '../views/ButtonView.js'
+import {ButtonsView} from '../views/ButtonsView.js'
 import {CanvasView} from '../views/CanvasView.js'
 import {PawnView} from '../views/PawnView.js'
 
@@ -20,12 +20,12 @@ class BoardView extends Backbone.View {
 
     initialize(opts){
         if (this.invalid(opts)) throw new Error("Board Model required to instanciate BoardView");
-        this.buttonView = new ButtonView()
+        this.buttonsView = new ButtonsView()
         this.canvasView = new CanvasView({board: this.model})
     }
 
     render(){        
-        this.el.append(this.buttonView.render().el)
+        this.el.append(this.buttonsView.render().el)
         this.el.append(this.canvasView.render().el)
         this.model.pawns()
                 .map(child => new PawnView({ model: child }))
