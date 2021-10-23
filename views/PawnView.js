@@ -1,3 +1,5 @@
+import {Pawn} from '../models/Pawn.js'
+
 class PawnView extends Backbone.View {
     preinitialize(){
         this.className = 'draggable-item'
@@ -77,3 +79,5 @@ class PawnView extends Backbone.View {
         }
     }
 }
+
+export { PawnView }

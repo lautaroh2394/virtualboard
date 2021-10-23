@@ -3,3 +3,5 @@ class CanvasView extends Backbone.View {
         return '<div class="board" draggable="true"></div>'
     }
 }
+
+export { CanvasView }

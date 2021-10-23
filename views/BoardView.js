@@ -1,3 +1,8 @@
+import {Board} from '../models/Board.js'
+import {ButtonView} from '../views/ButtonView.js'
+import {CanvasView} from '../views/CanvasView.js'
+import {PawnView} from '../views/PawnView.js'
+
 class BoardView extends Backbone.View {
     preinitialize(){
         this.className= '.board'
@@ -29,3 +34,5 @@ class BoardView extends Backbone.View {
         return this
     }
 }
+
+export { BoardView }

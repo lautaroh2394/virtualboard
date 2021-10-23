@@ -11,3 +11,5 @@ class Board extends Backbone.Model {
         return this.get("pawns")
     }
 }
+
+export { Board }

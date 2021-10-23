@@ -15,19 +15,6 @@
         <script src="https://backbonejs.org/backbone.js"></script>
 
         <!-- Scripts-->
-        <script async defer src="models/Board.js"></script>
-        <script async defer src="models/Pawn.js"></script>
-        <script async defer src="views/BoardView.js"></script>
-        <script async defer src="views/PawnView.js"></script>
-        <script async defer src="views/ButtonView.js"></script>
-        <script async defer src="views/CanvasView.js"></script>
-    
-        <script async defer>
-            window.addEventListener("load", ev => {
-                mainBoard = new Board({pawns: [new Pawn({name:1}),new Pawn({name:2}),new Pawn({name:3})]})
-                boardView = new BoardView({model: mainBoard})
-                document.body.append(boardView.render().el)
-            })
-        </script>
+        <script async defer src="app.js" type='module'></script>
     </body>
 </html>
