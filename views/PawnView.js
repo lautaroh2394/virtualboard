@@ -1,9 +1,10 @@
 class PawnView extends Backbone.View {
+    preinitialize(){
+        this.className = 'draggable-item'
+    }
+
     getTemplate(){
-        return '\
-        <div class="draggable-item">\
-            <span><%= name %></span>\
-        </div>'
+        return "<span><%= name %></span>"
     }
 
     appliedTemplate(){
@@ -16,6 +17,13 @@ class PawnView extends Backbone.View {
         return html
     }
 
+    getTemplateParams(){
+        let params = {
+            name: this.model.get('name')
+        }
+        return params
+    }
+
     invalid(opts){
         return !opts.model || !(opts.model instanceof Pawn)
     }
@@ -26,8 +34,8 @@ class PawnView extends Backbone.View {
 
     render(){
         this.$el.html(this.appliedTemplate());
-        this.makeDraggable(this.$el[0])
-        return this;
+        this.makeDraggable(this.el)
+        return this;    
     }
 
     makeDraggable(element){

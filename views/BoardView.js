@@ -1,7 +1,12 @@
 class BoardView extends Backbone.View {
+    preinitialize(){
+        this.className= '.board'
+    }
+
     template(){
-        return '\
-        <div class="board" draggable="true"></div>'
+        return _.template('<div class="board" draggable="true">    \
+            <% children.map(child => child.$el.html()).join() %> \
+        </div>')
     }
 
     invalid(opts){
@@ -14,15 +19,13 @@ class BoardView extends Backbone.View {
         this.canvasView = new CanvasView()
     }
 
-    render(){
-        this.$el.html(this.template());
-        this.$el.append(this.buttonView.render().$el)
-        this.$el.append(this.canvasView.render().$el)
+    render(){        
+        this.el.append(this.buttonView.render().el)
+        this.el.append(this.canvasView.render().el)
         this.model.pawns()
-            .map(child => new PawnView({model:child}))
-            .map( pawnView =>
-                this.$el[0].appendChild(pawnView.render().$el[0])
-            )
+                .map(child => new PawnView({ model: child }))
+                .map( pawnView => this.el.append(pawnView.render().el))
+        
         return this
     }
 }

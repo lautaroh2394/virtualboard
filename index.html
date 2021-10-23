@@ -15,69 +15,18 @@
         <script src="https://backbonejs.org/backbone.js"></script>
 
         <!-- Scripts-->
-        <script async defer src="init_backbone.js"></script>
         <script async defer src="models/Board.js"></script>
         <script async defer src="models/Pawn.js"></script>
         <script async defer src="views/BoardView.js"></script>
         <script async defer src="views/PawnView.js"></script>
         <script async defer src="views/ButtonView.js"></script>
         <script async defer src="views/CanvasView.js"></script>
-        
-
-        <!-- HTML Elements tree -->
-        <div class="board" draggable="true">
-            <div class="draggable-item">
-                <span>test</span>
-            </div>
-            <div class="draggable-item">
-                <span>test2</span>
-            </div>
-            <div class="draggable-item">
-                <span>test3</span>
-            </div>
-            <div class="draggable-item">
-                <span>test4</span>
-            </div>
-        </div>
+    
         <script async defer>
             window.addEventListener("load", ev => {
-                mainBoard = new Board();
-                [...document.querySelectorAll(".draggable-item")].forEach(item => makeDraggable(item))
-
-                function makeDraggable(element){
-                    var currentOffsetX = 0, currentOffsetY = 0, initialPosX = 0, initialPosY = 0;
-                    element.addEventListener("mousedown", dragMouseDown);
-
-                    function dragMouseDown(e) {
-                        e = e || window.event;
-                        e.preventDefault();
-                        // get the mouse cursor position at startup:
-                        initialPosX = e.clientX;
-                        initialPosY = e.clientY;
-                        document.addEventListener("mouseup", closeDragElement);
-                        // call a function whenever the cursor moves:
-                        document.addEventListener("mousemove", elementDrag);
-                    }
-
-                    function elementDrag(e) {
-                        e = e || window.event;
-                        e.preventDefault();
-                        // calculate the new cursor position:
-                        currentOffsetX = initialPosX - e.clientX;
-                        currentOffsetY = initialPosY - e.clientY;
-                        initialPosX = e.clientX;
-                        initialPosY = e.clientY;
-                        // set the element's new position:
-                        element.style.top = (element.offsetTop - currentOffsetY) + "px";
-                        element.style.left = (element.offsetLeft - currentOffsetX) + "px";
-                    }
-
-                    function closeDragElement() {
-                        // stop moving when mouse button is released:
-                        document.removeEventListener("mouseup", closeDragElement)
-                        document.removeEventListener("mousemove", elementDrag)
-                    }
-                }
+                mainBoard = new Board({pawns: [new Pawn({name:1}),new Pawn({name:2}),new Pawn({name:3})]})
+                boardView = new BoardView({model: mainBoard})
+                document.body.append(boardView.render().el)
             })
         </script>
     </body>
