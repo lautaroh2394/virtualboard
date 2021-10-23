@@ -21,7 +21,7 @@ class BoardView extends Backbone.View {
     initialize(opts){
         if (this.invalid(opts)) throw new Error("Board Model required to instanciate BoardView");
         this.buttonView = new ButtonView()
-        this.canvasView = new CanvasView()
+        this.canvasView = new CanvasView({board: this.model})
     }
 
     render(){        

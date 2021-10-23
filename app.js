@@ -5,8 +5,10 @@ import {PawnView} from "./views/PawnView.js"
 import {ButtonView} from "./views/ButtonView.js"
 import {CanvasView}  from "./views/CanvasView.js"
 
+import {testBoardData} from "./test/testData.js"
+
 window.addEventListener("load", ev => {
-    let mainBoard = new Board({pawns: [new Pawn({name:1}),new Pawn({name:2}),new Pawn({name:3})]})
-    let boardView = new BoardView({model: mainBoard})
+    let mainBoard = new Board(testBoardData)
+    let boardView = new BoardView({ model: mainBoard })
     document.body.append(boardView.render().el)
 })
