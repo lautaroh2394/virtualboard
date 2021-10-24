@@ -1,4 +1,8 @@
 class ButtonView extends Backbone.View {
+    preinitialize(){
+        this.className = 'button-view'
+    }
+
     template(){
         return _.template('<span> <%= icon %> </span>')
     }
