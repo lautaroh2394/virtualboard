@@ -1,17 +1,11 @@
 import {Board} from '../models/Board.js'
-import {ButtonsView} from '../views/ButtonsView.js'
 import {CanvasView} from '../views/CanvasView.js'
 import {PawnView} from '../views/PawnView.js'
+import { DefaultButtonsViewFactory } from '../factories/DefaultButtonsViewFactory.js'
 
 class BoardView extends Backbone.View {
     preinitialize(){
-        this.className= '.board'
-    }
-
-    template(){
-        return _.template('<div class="board" draggable="true">    \
-            <% children.map(child => child.$el.html()).join() %> \
-        </div>')
+        this.className= 'board'
     }
 
     invalid(opts){
@@ -20,7 +14,8 @@ class BoardView extends Backbone.View {
 
     initialize(opts){
         if (this.invalid(opts)) throw new Error("Board Model required to instanciate BoardView");
-        this.buttonsView = new ButtonsView()
+        const buttonsViewFactory = new DefaultButtonsViewFactory()
+        this.buttonsView = buttonsViewFactory.build()
         this.canvasView = new CanvasView({board: this.model})
     }
 
