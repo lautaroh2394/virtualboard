@@ -3,10 +3,10 @@ import { AddPawnButtonView } from '../views/AddPawnButtonView.js'
 
 class DefaultButtonsViewFactory {
     build(){
-        return new ButtonsView(this.defaultButtons())
+        return new ButtonsView(this.buttons())
     }
 
-    defaultButtons(){
+    buttons(){
         return [
             new AddPawnButtonView()
         ]
