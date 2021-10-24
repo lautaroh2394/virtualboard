@@ -1,4 +1,4 @@
-html, body, .board {
+html, body, .board-view, .canvas-view {
     height: 100%;
 }
 
