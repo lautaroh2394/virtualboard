@@ -4,9 +4,6 @@ class Board extends Backbone.Model {
             "screenHeight": window.outerHeight,
             "screenWidth": window.outerWidth
         });
-        //create buttons
-        //create board 'drawable' part (where to put the icons)
-        //
     }
 
     pawns(){
