@@ -1,6 +1,6 @@
 class ButtonsView extends Backbone.View {
     preinitialize(){
-        this.className= 'buttons-view'
+        this.className = 'buttons-view'
     }
 
     initialize(buttonViewList){

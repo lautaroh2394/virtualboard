@@ -11,4 +11,8 @@ window.addEventListener("load", ev => {
     const mainBoard = new Board(testBoardData)
     const boardView = new BoardView({ model: mainBoard })
     document.body.append(boardView.render().el)
+    window.___ = {
+        board: mainBoard,
+        boardView: boardView
+    }
 })
