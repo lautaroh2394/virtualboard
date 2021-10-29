@@ -20,7 +20,12 @@ class BoardView extends Backbone.View {
         this.on('AddPawn', this.triggerAddPawn)
     }
 
+    log(...args){
+        console.log('BoardView - event catched', args)
+    }
+
     triggerAddPawn(){
+        this.log()    
         this.model.trigger('AddPawn')
     }
 

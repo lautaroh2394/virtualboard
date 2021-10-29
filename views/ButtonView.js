@@ -19,6 +19,7 @@ class ButtonView extends Backbone.View {
 
     render(){
         this.$el.html(this.template()(this.templateParams()))
+        this.delegateEvents() // I shouldnt be doing this. render should work seamlessly.
         return this
     }
 }

@@ -14,8 +14,14 @@ class Board extends Backbone.Model {
         return this.get("pawns")
     }
 
+    log(...args){
+        console.log('Board - Backbone event catched', args)
+    }
+
     addPawn(){
+        this.log()
         const pawn = new Pawn({ name: this.pawns().length})
+        this.set("pawns", [...this.pawns(), pawn])
         this.trigger("Render")
     }
 }

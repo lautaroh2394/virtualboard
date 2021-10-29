@@ -13,12 +13,13 @@ class AddPawnButtonView extends ButtonView {
         this.on('all', this.log)
     }
 
-    log(args){
+    log(...args){
         console.log('Backbone event catched', args)
     }
 
     addPawn(event){
-       this.parent.trigger("AddPawn")
+        this.log(event)
+        this.parent.trigger("AddPawn")
     }
 
     icon(){
