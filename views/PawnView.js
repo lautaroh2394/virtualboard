@@ -11,16 +11,12 @@ class PawnView extends Backbone.View {
 
     appliedTemplate(){
         const params = {
-            name: this.model.get('name')
+            name: this.model.get('name'),
+            top: this.model.getTop(),
+            left: this.model.getLeft()
         }
         const template = this.template();
         return _.template(template)(params)
-    }
-
-    templateParams(){
-        return {
-            name: this.model.get('name')
-        }
     }
 
     invalid(opts){
@@ -33,6 +29,7 @@ class PawnView extends Backbone.View {
 
     render(){
         this.$el.html(this.appliedTemplate());
+        this.applyOffset(this.el)
         this.makeDraggable(this.el)
         return this;    
     }
@@ -66,7 +63,9 @@ class PawnView extends Backbone.View {
             element.style.top = top
             let left = (element.offsetLeft - currentOffsetX) + "px";
             element.style.left = left
-            //_this.model.updateOffset(top, left)
+            _this.model.setTop(top)
+            _this.model.setLeft(left)
+
         }
 
         function closeDragElement() {
@@ -74,6 +73,11 @@ class PawnView extends Backbone.View {
             document.removeEventListener("mouseup", closeDragElement)
             document.removeEventListener("mousemove", elementDrag)
         }
+    }
+
+    applyOffset(element){
+        element.style.top = this.model.getTop()
+        element.style.left = this.model.getLeft()
     }
 }
 

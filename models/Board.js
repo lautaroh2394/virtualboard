@@ -20,7 +20,7 @@ class Board extends Backbone.Model {
 
     addPawn(){
         this.log()
-        const pawn = new Pawn({ name: this.pawns().length})
+        const pawn = new Pawn({ name: this.pawns().length + 1 })
         this.set("pawns", [...this.pawns(), pawn])
         this.trigger("Render")
     }
