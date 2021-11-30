@@ -76,8 +76,16 @@ class PawnView extends Backbone.View {
     }
 
     applyOffset(element){
-        element.style.top = this.model.getTop()
-        element.style.left = this.model.getLeft()
+        element.style.top = this.model.getTop() || this.screenVerticalCenter()
+        element.style.left = this.model.getLeft() || this.screenHorizontalCenter()
+    }
+
+    screenHorizontalCenter(){
+        return `${window.screen.width / 2}px`
+    }
+
+    screenVerticalCenter(){
+        return `${window.screen.height / 2}px`
     }
 }
 
