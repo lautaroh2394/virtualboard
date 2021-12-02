@@ -1,8 +1,8 @@
-import {PawnView} from '../views/PawnView.js'
+import {PawnView} from './PawnView.js'
 
-class CanvasView extends Backbone.View {
+class CurrentFrameView extends Backbone.View {
     preinitialize(){
-        this.className = 'canvas-view'
+        this.className = 'frame-view'
     }
 
     initialize(opts){
@@ -18,4 +18,4 @@ class CanvasView extends Backbone.View {
     }
 }
 
-export { CanvasView }
+export { CurrentFrameView }

@@ -1,18 +1,18 @@
-import {Board} from "./models/Board.js"
+import {Frame} from "./models/Frame.js"
 import {Pawn} from "./models/Pawn.js"
-import {BoardView} from "./views/BoardView.js"
+import {VirtualBoardView} from "./views/VirtualBoardView.js"
 import {PawnView} from "./views/PawnView.js"
 import {ButtonsView} from "./views/ButtonsView.js"
-import {CanvasView}  from "./views/CanvasView.js"
+import {CurrentFrameView}  from "./views/CurrentFrameView.js"
 
 import {testBoardData} from "./test/testData.js"
 
 window.addEventListener("load", ev => {
-    const mainBoard = new Board(testBoardData)
-    const boardView = new BoardView({ model: mainBoard })
-    document.body.append(boardView.render().el)
+    const mainBoard = new Frame(testBoardData)
+    const virtualBoardView = new VirtualBoardView({ model: mainBoard })
+    document.body.append(virtualBoardView.render().el)
     window.___ = {
         board: mainBoard,
-        boardView: boardView
+        virtualBoardView: virtualBoardView
     }
 })

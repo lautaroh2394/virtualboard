@@ -1,12 +1,8 @@
 import { Pawn } from './Pawn.js'
 
-class Board extends Backbone.Model {
+class Frame extends Backbone.Model {
     initialize() {
-        this.set({
-            "screenHeight": window.outerHeight,
-            "screenWidth": window.outerWidth
-        });
-        Backbone.on("AddPawn", this.addPawn)
+        // Backbone.on("AddPawn", this.addPawn)
         this.on("AddPawn", this.addPawn)
     }
 
@@ -15,7 +11,7 @@ class Board extends Backbone.Model {
     }
 
     log(...args){
-        console.log('Board - Backbone event catched', args)
+        console.log('Frame - Backbone event catched', args)
     }
 
     addPawn(){
@@ -26,4 +22,4 @@ class Board extends Backbone.Model {
     }
 }
 
-export { Board }
+export { Frame }
