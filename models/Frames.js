@@ -1,11 +1,12 @@
-import { Frame } from 'Frame.js'
+import { Frame } from './Frame.js'
 
 class Frames extends Backbone.Model {
 
     initialize(opts){
-        // this.set("frames", opts.frames || [])
-        this.set("active_frame", null)
-        this.set("active_frame_index", -1)
+        this.set("frames", opts.frames || [])
+        this.set("active_frame", opts.active_frame || null)
+        this.set("active_frame_index", opts.active_frame_index || -1)
+        this.on("AddPawn", this.addPawn)
     }
 
     moveSelectedFrame(frames_to_move){
@@ -67,6 +68,10 @@ class Frames extends Backbone.Model {
         this.set("active_frame_index", index)
         this.set("active_frame", frames[index])
     }
+
+    addPawn(){
+        this.getCurrentFrame().addPawn()
+    }
 }
 
-export { Frame }
+export { Frames }
