@@ -19,7 +19,7 @@ class Frame extends Backbone.Model {
         const pawn = new Pawn({ name: this.pawns().length + 1 })
         this.set("pawns", [...this.pawns(), pawn])
         //this.trigger("Render")
-        Backbone.trigger("Frames:Render")
+        Backbone.trigger("Frame:Render")
     }
 }
 

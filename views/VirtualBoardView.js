@@ -18,9 +18,8 @@ class VirtualBoardView extends Backbone.View {
         const buttonsViewFactory = new DefaultButtonsViewFactory(this)
         this.buttonsView = buttonsViewFactory.build()
         this.CurrentFrameView = new CurrentFrameView({ board: this.model.getCurrentFrame() })
-        this.listenTo(this.model, 'Render', this.render)
         this.on('AddPawn', this.triggerAddPawn)
-        Backbone.on("Frames:Render", this.render, this)
+        Backbone.on("Frame:Render", this.render, this)
     }
 
     log(...args){
