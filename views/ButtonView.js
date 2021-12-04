@@ -1,6 +1,9 @@
 class ButtonView extends Backbone.View {
     preinitialize(){
         this.className = 'button-view'
+        this.events = {
+            "click": 'onClick'
+        }
     }
 
     template(){
@@ -21,6 +24,10 @@ class ButtonView extends Backbone.View {
         this.$el.html(this.template()(this.templateParams()))
         this.delegateEvents() // I shouldnt be doing this. render should work seamlessly.
         return this
+    }
+
+    log(...args){
+        console.log(`Backbone event catched in ${this.classNameForLog}`, args)
     }
 }
 

@@ -4,9 +4,12 @@ class Frames extends Backbone.Model {
 
     initialize(opts){
         this.set("frames", opts.frames || [])
+        this.setFramesIds()
+        this.setFirstFrameSelected()
         this.set("active_frame", opts.active_frame || null)
         this.set("active_frame_index", opts.active_frame_index || -1)
         this.on("AddPawn", this.addPawn)
+        this.on("NewFrame", this.newFrame)
     }
 
     moveSelectedFrame(frames_to_move){
@@ -41,6 +44,13 @@ class Frames extends Backbone.Model {
 
     getCurrentFrameIndex(){
         return this.get("active_frame_index")
+    }
+
+    newFrame(){
+        const newFrame = new Frame()
+        this.addFrame(newFrame)
+        this.nextFrame()
+        Backbone.trigger("Frames:Render")
     }
 
     addFrame(frame){

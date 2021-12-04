@@ -19,7 +19,9 @@ class VirtualBoardView extends Backbone.View {
         this.buttonsView = buttonsViewFactory.build()
         this.CurrentFrameView = new CurrentFrameView({ board: this.model.getCurrentFrame() })
         this.on('AddPawn', this.triggerAddPawn)
+        this.on('NewFrame', this.triggerNewFrame)
         Backbone.on("Frame:Render", this.render, this)
+        Backbone.on("Frames:Render", this.render, this)
     }
 
     log(...args){
@@ -29,6 +31,11 @@ class VirtualBoardView extends Backbone.View {
     triggerAddPawn(){
         this.log()    
         this.model.trigger('AddPawn')
+    }
+
+    triggerNewFrame(){
+        this.log()    
+        this.model.trigger('NewFrame')
     }
 
     render(){

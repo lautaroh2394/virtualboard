@@ -4,6 +4,7 @@ class Frame extends Backbone.Model {
     initialize() {
         // Backbone.on("AddPawn", this.addPawn)
         this.on("AddPawn", this.addPawn)
+        if (!(this.pawns())) this.set("pawns", [])
     }
 
     pawns(){
