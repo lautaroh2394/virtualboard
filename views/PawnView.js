@@ -1,42 +1,43 @@
-import {Pawn} from '../models/Pawn.js'
+import Pawn from '../models/Pawn.js';
 
 class PawnView extends Backbone.View {
-    preinitialize(){
-        this.className = 'draggable-item'
+    preinitialize() {
+        this.className = 'draggable-item';
     }
 
-    template(){
-        return "<span><%= name %></span>"
+    template() {
+        return '<span><%= name %></span>';
     }
 
-    appliedTemplate(){
+    appliedTemplate() {
         const params = {
             name: this.model.get('name'),
             top: this.model.getTop(),
-            left: this.model.getLeft()
-        }
+            left: this.model.getLeft(),
+        };
         const template = this.template();
-        return _.template(template)(params)
+        return _.template(template)(params);
     }
 
-    invalid(opts){
-        return !opts.model || !(opts.model instanceof Pawn)
+    invalid(opts) {
+        return !opts.model || !(opts.model instanceof Pawn);
     }
 
-    initialize(opts){
-        if (this.invalid(opts)) throw new Error("Pawn Model required to instanciate PawnView");
+    initialize(opts) {
+        if (this.invalid(opts)) throw new Error('Pawn Model required to instanciate PawnView');
     }
 
-    render(){
+    render() {
         this.$el.html(this.appliedTemplate());
-        this.applyOffset(this.el)
-        this.makeDraggable(this.el)
-        return this;    
+        this.applyOffset(this.el);
+        this.makeDraggable(this.el);
+        return this;
     }
 
-    makeDraggable(element){
-        let currentOffsetX = 0, currentOffsetY = 0, initialPosX = 0, initialPosY = 0;
-        element.addEventListener("mousedown", dragMouseDown);
+    makeDraggable(element) {
+        let currentOffsetX = 0; let currentOffsetY = 0; let initialPosX = 0; let
+            initialPosY = 0;
+        element.addEventListener('mousedown', dragMouseDown);
         const _this = this;
 
         function dragMouseDown(e) {
@@ -45,9 +46,9 @@ class PawnView extends Backbone.View {
             // get the mouse cursor position at startup:
             initialPosX = e.clientX;
             initialPosY = e.clientY;
-            document.addEventListener("mouseup", closeDragElement);
+            document.addEventListener('mouseup', closeDragElement);
             // call a function whenever the cursor moves:
-            document.addEventListener("mousemove", elementDrag);
+            document.addEventListener('mousemove', elementDrag);
         }
 
         function elementDrag(e) {
@@ -59,34 +60,33 @@ class PawnView extends Backbone.View {
             initialPosX = e.clientX;
             initialPosY = e.clientY;
             // set the element's new position:
-            let top = (element.offsetTop - currentOffsetY) + "px";
-            element.style.top = top
-            let left = (element.offsetLeft - currentOffsetX) + "px";
-            element.style.left = left
-            _this.model.setTop(top)
-            _this.model.setLeft(left)
-
+            const top = `${element.offsetTop - currentOffsetY}px`;
+            element.style.top = top;
+            const left = `${element.offsetLeft - currentOffsetX}px`;
+            element.style.left = left;
+            _this.model.setTop(top);
+            _this.model.setLeft(left);
         }
 
         function closeDragElement() {
             // stop moving when mouse button is released:
-            document.removeEventListener("mouseup", closeDragElement)
-            document.removeEventListener("mousemove", elementDrag)
+            document.removeEventListener('mouseup', closeDragElement);
+            document.removeEventListener('mousemove', elementDrag);
         }
     }
 
-    applyOffset(element){
-        element.style.top = this.model.getTop() || this.screenVerticalCenter()
-        element.style.left = this.model.getLeft() || this.screenHorizontalCenter()
+    applyOffset(element) {
+        element.style.top = this.model.getTop() || this.screenVerticalCenter();
+        element.style.left = this.model.getLeft() || this.screenHorizontalCenter();
     }
 
-    screenHorizontalCenter(){
-        return `${window.screen.width / 2}px`
+    screenHorizontalCenter() {
+        return `${window.screen.width / 2}px`;
     }
 
-    screenVerticalCenter(){
-        return `${window.screen.height / 2}px`
+    screenVerticalCenter() {
+        return `${window.screen.height / 2}px`;
     }
 }
 
-export { PawnView }
+export default PawnView;

@@ -1,20 +1,20 @@
-import { ButtonsView } from '../views/ButtonsView.js'
-import { AddPawnButtonView } from '../views/AddPawnButtonView.js'
+import ButtonsView from '../views/ButtonsView.js';
+import AddPawnButtonView from '../views/AddPawnButtonView.js';
 
 class DefaultButtonsViewFactory {
-    constructor(parent){
-        this.parent = parent
+    constructor(parent) {
+        this.parent = parent;
     }
 
-    build(){
-        return new ButtonsView(this.buttons())
+    build() {
+        return new ButtonsView(this.buttons());
     }
 
-    buttons(){
+    buttons() {
         return [
-            new AddPawnButtonView({parent: this.parent})
-        ]
+            new AddPawnButtonView({ parent: this.parent }),
+        ];
     }
 }
 
-export { DefaultButtonsViewFactory }
+export default DefaultButtonsViewFactory;
