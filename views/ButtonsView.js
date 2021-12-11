@@ -1,18 +1,18 @@
 class ButtonsView extends Backbone.View {
-    preinitialize(){
-        this.className = 'buttons-view'
+    preinitialize() {
+        this.className = 'buttons-view';
     }
 
-    initialize(buttonViewList){
-        this.buttonViewList = buttonViewList
+    initialize(buttonViewList) {
+        this.buttonViewList = buttonViewList;
     }
 
-    render(){
-     this.buttonViewList.forEach(buttonView => {
-         this.el.append(buttonView.render().el)
-     })
-     return this
+    render() {
+        this.buttonViewList.forEach(buttonView => {
+            this.el.append(buttonView.render().el);
+        });
+        return this;
     }
 }
 
-export { ButtonsView }
+export default ButtonsView;

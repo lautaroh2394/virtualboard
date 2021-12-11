@@ -1,24 +1,24 @@
-import { ButtonView } from '../views/ButtonView.js'
+import ButtonView from './ButtonView.js';
 
 class AddPawnButtonView extends ButtonView {
-    preinitialize(){
-        super.preinitialize()
+    preinitialize() {
+        super.preinitialize();
     }
 
-    initialize({parent}){
-        this.parent = parent
-        this.classNameForLog = "AddPawnButtonView"
-        this.on('all', this.log)
+    initialize({ parent }) {
+        this.parent = parent;
+        this.classNameForLog = 'AddPawnButtonView';
+        this.on('all', this.log);
     }
 
-    onClick(event){
-        this.log(event)
-        this.parent.trigger("AddPawn")
+    onClick(event) {
+        this.log(event);
+        this.parent.trigger('AddPawn');
     }
 
-    icon(){
-        return 'ADDPAWNBUTTONVIEW'
+    icon() {
+        return 'ADDPAWNBUTTONVIEW';
     }
 }
 
-export { AddPawnButtonView }
+export default AddPawnButtonView;

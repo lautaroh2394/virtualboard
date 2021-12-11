@@ -1,27 +1,27 @@
-import { Pawn } from './Pawn.js'
+import Pawn from './Pawn.js';
 
 class Frame extends Backbone.Model {
     initialize() {
         // Backbone.on("AddPawn", this.addPawn)
-        this.on("AddPawn", this.addPawn)
-        if (!(this.pawns())) this.set("pawns", [])
+        this.on('AddPawn', this.addPawn);
+        if (!(this.pawns())) this.set('pawns', []);
     }
 
-    pawns(){
-        return this.get("pawns")
+    pawns() {
+        return this.get('pawns');
     }
 
-    log(...args){
-        console.log('Frame - Backbone event catched', args)
+    log(...args) {
+        console.log('Frame - Backbone event catched', args);
     }
 
-    addPawn(){
-        this.log()
-        const pawn = new Pawn({ name: this.pawns().length + 1 })
-        this.set("pawns", [...this.pawns(), pawn])
-        //this.trigger("Render")
-        Backbone.trigger("Frame:Render")
+    addPawn() {
+        this.log();
+        const pawn = new Pawn({ name: this.pawns().length + 1 });
+        this.set('pawns', [...this.pawns(), pawn]);
+        // this.trigger("Render")
+        Backbone.trigger('Frame:Render');
     }
 }
 
-export { Frame }
+export default Frame;
