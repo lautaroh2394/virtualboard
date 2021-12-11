@@ -1,27 +1,27 @@
-import { ButtonView } from './ButtonView.js'
+import ButtonView from './ButtonView.js';
 
 class PreviousFrameButtonView extends ButtonView {
-    preinitialize(){
-        super.preinitialize()
+    preinitialize() {
+        super.preinitialize();
         this.events = {
-            "click": 'onClick'
-        }
+            click: 'onClick',
+        };
     }
 
-    initialize({parent}){
-        this.parent = parent
-        this.classNameForLog = "PreviousFrameButtonView"
-        this.on('all', this.log)
+    initialize({ parent }) {
+        this.parent = parent;
+        this.classNameForLog = 'PreviousFrameButtonView';
+        this.on('all', this.log);
     }
 
-    onClick(event){
-        this.log(event)
-        this.parent.trigger("AddPawn")
+    onClick(event) {
+        this.log(event);
+        this.parent.trigger('AddPawn');
     }
 
-    icon(){
-        return 'PREVIOUSFRAMEBUTTONVIEW'
+    icon() {
+        return 'PREVIOUSFRAMEBUTTONVIEW';
     }
 }
 
-export { PreviousFrameButtonView }
+export default PreviousFrameButtonView;

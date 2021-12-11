@@ -3,8 +3,8 @@ import Frame from './Frame.js';
 class Frames extends Backbone.Model {
     initialize(opts) {
         this.set('frames', opts.frames || []);
-        this.setFramesIds();
-        this.setFirstFrameSelected();
+        // this.setFramesIds();
+        // this.setFirstFrameSelected();
         this.set('active_frame', opts.active_frame || null);
         this.set('active_frame_index', opts.active_frame_index || -1);
         this.on('AddPawn', this.addPawn);
