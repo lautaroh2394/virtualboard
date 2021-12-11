@@ -20,6 +20,12 @@
         "import/extensions": ["error","ignorePackages"],
         "camelcase": "off",
         "radix": "off",
-        "no-param-reassign": "off"
+        "no-param-reassign": "off",
+        "arrow-parens": "off",
+        "no-underscore-dangle": "off"
+    },
+    "globals": {
+        "Backbone": "writable",
+        "_": "writable"
     }
 }
