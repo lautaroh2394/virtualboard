@@ -16,6 +16,10 @@
         "spaced-comment": "warn",
         "linebreak-style": "off",
         "indent": ["error", 4],
-        "class-methods-use-this": "off"
+        "class-methods-use-this": "off",
+        "import/extensions": ["error","ignorePackages"],
+        "camelcase": "off",
+        "radix": "off",
+        "no-param-reassign": "off"
     }
 }
