@@ -18,7 +18,6 @@ class VirtualBoardView extends Backbone.View {
         if (this.invalid(opts)) throw new Error('Board Model required to instanciate VirtualBoardView');
         const buttonsViewFactory = new DefaultButtonsViewFactory(this);
         this.buttonsView = buttonsViewFactory.build();
-        // this.currentFrameView = this.createCurrentFrameView();
         this.on('AddPawn', this.triggerAddPawn);
         this.on('NewFrame', this.triggerNewFrame);
         this.on('NextFrame', this.triggerNextFrame);
