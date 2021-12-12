@@ -22,6 +22,10 @@ class Frame extends Backbone.Model {
         // this.trigger("Render")
         Backbone.trigger('Frame:Render');
     }
+
+    setId(id) {
+        this.set('id', id);
+    }
 }
 
 export default Frame;

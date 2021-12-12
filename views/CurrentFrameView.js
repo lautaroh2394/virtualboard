@@ -6,12 +6,12 @@ class CurrentFrameView extends Backbone.View {
     }
 
     initialize(opts) {
-        this.board = opts.board;
+        // Receives a Frame object as model in opts
     }
 
     render() {
         this.$el.html('');
-        this.board.pawns()
+        this.model.pawns()
             .map(child => new PawnView({ model: child }))
             .map(pawnView => this.el.append(pawnView.render().el));
         return this;

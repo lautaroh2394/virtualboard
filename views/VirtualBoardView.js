@@ -18,11 +18,17 @@ class VirtualBoardView extends Backbone.View {
         if (this.invalid(opts)) throw new Error('Board Model required to instanciate VirtualBoardView');
         const buttonsViewFactory = new DefaultButtonsViewFactory(this);
         this.buttonsView = buttonsViewFactory.build();
-        this.CurrentFrameView = new CurrentFrameView({ board: this.model.getCurrentFrame() });
+        // this.currentFrameView = this.createCurrentFrameView();
         this.on('AddPawn', this.triggerAddPawn);
         this.on('NewFrame', this.triggerNewFrame);
+        this.on('NextFrame', this.triggerNextFrame);
+        this.on('PreviousFrame', this.triggerPreviousFrame);
         Backbone.on('Frame:Render', this.render, this);
         Backbone.on('Frames:Render', this.render, this);
+    }
+
+    createCurrentFrameView() {
+        return new CurrentFrameView({ model: this.model.getCurrentFrame() });
     }
 
     log(...args) {
@@ -39,10 +45,20 @@ class VirtualBoardView extends Backbone.View {
         this.model.trigger('NewFrame');
     }
 
+    triggerNextFrame() {
+        this.log();
+        this.model.trigger('NextFrame');
+    }
+
+    triggerPreviousFrame() {
+        this.log();
+        this.model.trigger('PreviousFrame');
+    }
+
     render() {
         this.$el.html('');
         this.el.append(this.buttonsView.render().el);
-        this.el.append(this.CurrentFrameView.render().el);
+        this.el.append(this.createCurrentFrameView().render().el);
         return this;
     }
 }

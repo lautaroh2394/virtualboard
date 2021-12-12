@@ -16,7 +16,7 @@ class PreviousFrameButtonView extends ButtonView {
 
     onClick(event) {
         this.log(event);
-        this.parent.trigger('AddPawn');
+        this.parent.trigger('PreviousFrame');
     }
 
     icon() {

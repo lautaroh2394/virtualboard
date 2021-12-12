@@ -1,7 +1,6 @@
 import Frame from './models/Frame.js';
 import Frames from './models/Frames.js';
 import VirtualBoardView from './views/VirtualBoardView.js';
-
 import testBoardData from './test/testData.js';
 
 window.addEventListener('load', () => {
