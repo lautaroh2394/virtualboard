@@ -1,13 +1,13 @@
 import ButtonView from './ButtonView.js';
 
-class DownloadJsonButtonView extends ButtonView {
+class DownloadJSONButtonView extends ButtonView {
     preinitialize() {
         super.preinitialize();
     }
 
     initialize({ parent }) {
         this.parent = parent;
-        this.classNameForLog = 'DownloadJsonButtonView';
+        this.classNameForLog = 'DownloadJSONButtonView';
         this.on('all', this.log);
     }
 
@@ -21,4 +21,4 @@ class DownloadJsonButtonView extends ButtonView {
     }
 }
 
-export default DownloadJsonButtonView;
+export default DownloadJSONButtonView;

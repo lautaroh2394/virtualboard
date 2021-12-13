@@ -20,6 +20,8 @@ Próximos pasos:
          (Con el attributes del model de Backbone alcanza? Con instanciarlos pasandoles ese objeto attributes se termina con un modelo equivalente?)
       x Agregar boton para descargar JSON
       Agregar boton para cargar json
+ - Cuando se crean frames no se está seteando el id
+ - Aregar id a los peones
  - Cuando se cree un nuevo frame, que por defecto cargue peones iguales a los del frame anterior
  - Crear button view builder? (es necesario?)
  - Mejorar vista del peon:

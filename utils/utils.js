@@ -1,5 +1,5 @@
 class Utils {
-    static downloadJson(json) {
+    static downloadJSON(json) {
         const readable_date = (new Date()).toLocaleDateString();
         const filename = `virtualboard_${readable_date}.json`;
         const data = JSON.stringify(json);

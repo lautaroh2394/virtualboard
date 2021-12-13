@@ -59,7 +59,7 @@ class VirtualBoardView extends Backbone.View {
     downloadJSON() {
         this.log();
         const json = this.model.generateJSON();
-        Utils.downloadJson(json);
+        Utils.downloadJSON(json);
     }
 
     render() {

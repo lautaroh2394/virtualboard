@@ -118,7 +118,7 @@ class Frames extends Backbone.Model {
 
     generateJSON() {
         if (this.getFrames().length === 0) return [];
-        return this.getFrames().map(frame => frame.toJson());
+        return this.getFrames().map(frame => frame.toJSON());
     }
 }
 
