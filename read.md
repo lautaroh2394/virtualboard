@@ -13,16 +13,19 @@ Próximos pasos:
     x Refactorear como se inicia la app. Se está instanciando VirtualBoardView pasándosele un Frame cuando debería ser un Frames con un Frame.
  - x Posibilidad de moverse entre frames
  - Exportar frames a JSON
-      Agregar posibilidad de serializar modelos:
+      x Agregar posibilidad de serializar y deserializar modelos:
          - Pawn
          - Frame
          - Frames
-         (Con el attributes del model de Backbone alcanza?)
-      Agregar boton para descargar JSON
+         (Con el attributes del model de Backbone alcanza? Con instanciarlos pasandoles ese objeto attributes se termina con un modelo equivalente?)
+      x Agregar boton para descargar JSON
+      Agregar boton para cargar json
+ - Cuando se cree un nuevo frame, que por defecto cargue peones iguales a los del frame anterior
  - Crear button view builder? (es necesario?)
  - Mejorar vista del peon:
       Agregar opcion para cambiar nombre
       Agregar opcion para cambiar color o setear imagen de fondo
  - Página principal con dos opciones: Nueva jugada o Cargar Jugada
+ - Transicion animada entre frames
  - Mejorar estilos
  - Agregar distintos tipos de peones
