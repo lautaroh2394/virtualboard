@@ -1,6 +1,7 @@
 import Frames from '../models/Frames.js';
 import CurrentFrameView from './CurrentFrameView.js';
-import DefaultButtonsViewFactory from '../factories/DefaultButtonsViewFactory.js';
+import DefaultButtonsViewFactory from '../utils/factories/DefaultButtonsViewFactory.js';
+import Utils from '../utils/utils.js';
 
 class VirtualBoardView extends Backbone.View {
     preinitialize() {
@@ -22,6 +23,7 @@ class VirtualBoardView extends Backbone.View {
         this.on('NewFrame', this.triggerNewFrame);
         this.on('NextFrame', this.triggerNextFrame);
         this.on('PreviousFrame', this.triggerPreviousFrame);
+        this.on('DownloadJSON', this.downloadJSON);
         Backbone.on('Frame:Render', this.render, this);
         Backbone.on('Frames:Render', this.render, this);
     }
@@ -52,6 +54,12 @@ class VirtualBoardView extends Backbone.View {
     triggerPreviousFrame() {
         this.log();
         this.model.trigger('PreviousFrame');
+    }
+
+    downloadJSON() {
+        this.log();
+        const json = this.model.generateJSON();
+        Utils.downloadJson(json);
     }
 
     render() {

@@ -115,6 +115,11 @@ class Frames extends Backbone.Model {
     addPawn() {
         this.getCurrentFrame().addPawn();
     }
+
+    generateJSON() {
+        if (this.getFrames().length === 0) return [];
+        return this.getFrames().map(frame => frame.toJson());
+    }
 }
 
 export default Frames;

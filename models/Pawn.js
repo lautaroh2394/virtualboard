@@ -1,20 +1,22 @@
 class Pawn extends Backbone.Model {
     initialize({ top, left }) {
-        this.top = top;
-        this.left = left;
+        this.set({
+            top,
+            left,
+        });
     }
 
     getTop() {
-        return this.top || 0;
+        return this.get('top') || 0;
     }
 
     getLeft() {
-        return this.left || 0;
+        return this.get('left') || 0;
     }
 
-    setTop(top) { this.top = top; }
+    setTop(top) { this.set({ top }); }
 
-    setLeft(left) { this.left = left; }
+    setLeft(left) { this.set({ left }); }
 }
 
 export default Pawn;

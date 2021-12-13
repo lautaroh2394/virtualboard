@@ -26,6 +26,12 @@ class Frame extends Backbone.Model {
     setId(id) {
         this.set('id', id);
     }
+
+    toJson() {
+        const json = { ...this.attributes };
+        json.pawns = json.pawns.map(pawn => pawn.attributes);
+        return json;
+    }
 }
 
 export default Frame;
