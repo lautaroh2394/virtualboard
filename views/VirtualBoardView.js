@@ -2,6 +2,8 @@ import Frames from '../models/Frames.js';
 import CurrentFrameView from './CurrentFrameView.js';
 import DefaultButtonsViewFactory from '../utils/factories/DefaultButtonsViewFactory.js';
 import Utils from '../utils/utils.js';
+import Frame from '../models/Frame.js';
+import Pawn from '../models/Pawn.js';
 
 class VirtualBoardView extends Backbone.View {
     preinitialize() {
@@ -26,6 +28,7 @@ class VirtualBoardView extends Backbone.View {
         this.on('DownloadJSON', this.downloadJSON);
         Backbone.on('Frame:Render', this.render, this);
         Backbone.on('Frames:Render', this.render, this);
+        Backbone.on('LoadJSON', this.loadJSON, this);
     }
 
     createCurrentFrameView() {
@@ -67,6 +70,10 @@ class VirtualBoardView extends Backbone.View {
         this.el.append(this.buttonsView.render().el);
         this.el.append(this.createCurrentFrameView().render().el);
         return this;
+    }
+
+    loadJSON(data) {
+        this.model.trigger('LoadJSON', data);
     }
 }
 

@@ -1,4 +1,5 @@
 import Frame from './Frame.js';
+import Pawn from './Pawn.js';
 
 class Frames extends Backbone.Model {
     initialize(opts) {
@@ -9,6 +10,7 @@ class Frames extends Backbone.Model {
         this.on('NewFrame', this.newFrame);
         this.on('NextFrame', this.nextFrame);
         this.on('PreviousFrame', this.previousFrame);
+        this.on('LoadJSON', this.loadJSON);
     }
 
     moveSelectedFrame(frames_to_move) {
@@ -119,6 +121,17 @@ class Frames extends Backbone.Model {
     generateJSON() {
         if (this.getFrames().length === 0) return [];
         return this.getFrames().map(frame => frame.toJSON());
+    }
+
+    loadJSON(data) {
+        const frames = data.reduce((prev, curr) => {
+            const pawns = curr.pawns.map(pawn_data => new Pawn(pawn_data));
+            const new_frame = new Frame({ pawns });
+            return [prev, new_frame].flat();
+        }, []);
+
+        this.set({ frames: new Frames({ frames }) });
+        Backbone.trigger('Frame:Render');
     }
 }
 
