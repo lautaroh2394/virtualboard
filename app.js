@@ -4,7 +4,7 @@ import VirtualBoardView from './views/VirtualBoardView.js';
 import testBoardData from './test/testData.js';
 
 window.addEventListener('load', () => {
-    const mainFrame = new Frame(testBoardData);
+    const mainFrame = new Frame({ ...testBoardData, id: 0 });
     const frames = new Frames({
         frames: [mainFrame],
         active_frame: mainFrame,
