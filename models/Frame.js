@@ -17,9 +17,8 @@ class Frame extends Backbone.Model {
 
     addPawn() {
         this.log();
-        const pawn = new Pawn({ name: this.pawns().length + 1 });
+        const pawn = new Pawn({ name: this.pawns().length + 1, id: this.generateFrameId() });
         this.set('pawns', [...this.pawns(), pawn]);
-        // this.trigger("Render")
         Backbone.trigger('Frame:Render');
     }
 
@@ -31,6 +30,16 @@ class Frame extends Backbone.Model {
         const json = { ...this.attributes };
         json.pawns = json.pawns.map(pawn => pawn.attributes);
         return json;
+    }
+
+    generateFrameId() {
+        let id = this.pawns().length;
+        let existsId = this.pawns().some(pawn => pawn.get('id') === id);
+        while (existsId) {
+            id += 1;
+            existsId = this.pawns().some(pawn => pawn.get('id') === id);
+        }
+        return id;
     }
 }
 

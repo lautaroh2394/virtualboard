@@ -22,7 +22,8 @@
         "radix": "off",
         "no-param-reassign": "off",
         "arrow-parens": "off",
-        "no-underscore-dangle": "off"
+        "no-underscore-dangle": "off",
+        "no-loop-func": "off"
     },
     "globals": {
         "Backbone": "writable",

@@ -2,8 +2,6 @@ import Frames from '../models/Frames.js';
 import CurrentFrameView from './CurrentFrameView.js';
 import DefaultButtonsViewFactory from '../utils/factories/DefaultButtonsViewFactory.js';
 import Utils from '../utils/utils.js';
-import Frame from '../models/Frame.js';
-import Pawn from '../models/Pawn.js';
 
 class VirtualBoardView extends Backbone.View {
     preinitialize() {

@@ -4,7 +4,6 @@ import Pawn from './Pawn.js';
 class Frames extends Backbone.Model {
     initialize(opts) {
         this.set('frames', opts.frames || []);
-        this.setFramesIds();
         this.setSelectedFrame(opts);
         this.on('AddPawn', this.addPawn);
         this.on('NewFrame', this.newFrame);
@@ -26,15 +25,6 @@ class Frames extends Backbone.Model {
         this.set('active_frame_index', nextFrameIndex);
         Backbone.trigger('Frames:Render');
         return newCurrentFrame;
-    }
-
-    setFramesIds() {
-        this.set('frames', this.getFrames().map((frame, index) => {
-            // Todo: Improve id generation.
-            // Maybe create a model that can provide ids and checks and avoids duplication
-            frame.setId(index);
-            return frame;
-        }));
     }
 
     setSelectedFrame(opts) {
@@ -74,7 +64,7 @@ class Frames extends Backbone.Model {
     }
 
     newFrame() {
-        const newFrame = new Frame();
+        const newFrame = new Frame({ id: this.generateFrameId() });
         this.insertFrame(newFrame, this.getCurrentFrameIndex() + 1);
         this.nextFrame();
         Backbone.trigger('Frames:Render');
@@ -130,8 +120,18 @@ class Frames extends Backbone.Model {
             return [prev, new_frame].flat();
         }, []);
 
-        this.set({ frames: new Frames({ frames }) });
+        this.set({ frames });
         Backbone.trigger('Frame:Render');
+    }
+
+    generateFrameId() {
+        let id = this.getFrames().length;
+        let existsId = this.getFrames().some(frame => frame.get('id') === id);
+        while (existsId) {
+            id += 1;
+            existsId = this.getFrames().some(frame => frame.get('id') === id);
+        }
+        return id;
     }
 }
 

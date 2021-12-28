@@ -1,11 +1,4 @@
 class Pawn extends Backbone.Model {
-    initialize({ top, left }) {
-        this.set({
-            top,
-            left,
-        });
-    }
-
     getTop() {
         return this.get('top') || 0;
     }

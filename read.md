@@ -19,15 +19,14 @@ Próximos pasos:
          - Frames
          (Con el attributes del model de Backbone alcanza? Con instanciarlos pasandoles ese objeto attributes se termina con un modelo equivalente?)
       x Agregar boton para descargar JSON
-      Agregar boton para cargar json
- - Cuando se crean frames no se está seteando el id
- - Aregar id a los peones
+      x Agregar boton para cargar json
+ - x Cuando se crean frames no se está seteando el id
+ - x Agregar id a los peones
  - Cuando se cree un nuevo frame, que por defecto cargue peones iguales a los del frame anterior
- - Crear button view builder? (es necesario?)
  - Mejorar vista del peon:
       Agregar opcion para cambiar nombre
       Agregar opcion para cambiar color o setear imagen de fondo
  - Página principal con dos opciones: Nueva jugada o Cargar Jugada
- - Transicion animada entre frames
  - Mejorar estilos
+ - Transicion animada entre frames
  - Agregar distintos tipos de peones

@@ -5,29 +5,14 @@ class LoadJSONButtonView extends ButtonView {
         super.preinitialize();
         this.events = {
             'click #span': 'onClick',
-            'change #jsonInput': 'loginput',
+            'change #jsonInput': 'loadJSONInput',
         };
     }
 
-    loginput(ev) {
-        console.log('json input change', ev);
+    loadJSONInput(ev) {
         const file = ev.target.files[0];
-
-        // Opc 1
-        /*
         file.text();
         file.text().then(text => {
-            const json = JSON.parse(text);
-            Backbone.trigger('LoadJSON', json);
-        });
-        */
-        // Opc 2
-        const readableStream = file.stream();
-        const streamReader = readableStream.getReader();
-        streamReader.read().then(data => {
-            const text = Array.from(data.value)
-                .map(c => String.fromCharCode(c))
-                .join('');
             const json = JSON.parse(text);
             Backbone.trigger('LoadJSON', json);
         });
