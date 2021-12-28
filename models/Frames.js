@@ -64,7 +64,9 @@ class Frames extends Backbone.Model {
     }
 
     newFrame() {
-        const newFrame = new Frame({ id: this.generateFrameId() });
+        const currentFramePawnsData = this.getCurrentFrame().toJSON().pawns;
+        const currentFramePawns = currentFramePawnsData.map(pawnData => new Pawn(pawnData));
+        const newFrame = new Frame({ id: this.generateFrameId(), pawns: currentFramePawns });
         this.insertFrame(newFrame, this.getCurrentFrameIndex() + 1);
         this.nextFrame();
         Backbone.trigger('Frames:Render');
@@ -76,14 +78,6 @@ class Frames extends Backbone.Model {
         const framesAfter = frames.slice(index, frames.length);
         const newFrames = [framesBefore, frame, framesAfter].flat();
         this.set('frames', newFrames);
-    }
-
-    addFrame(frame) {
-        if (!(frame instanceof Frame)) throw new Error('frame needs to be an instance of Frame');
-
-        const frames = this.getFrames();
-        frames.push(frame);
-        this.set('frames', frames);
     }
 
     removeCurrentFrame() {
@@ -117,7 +111,7 @@ class Frames extends Backbone.Model {
         const frames = data.reduce((prev, curr) => {
             const pawns = curr.pawns.map(pawn_data => new Pawn(pawn_data));
             const new_frame = new Frame({ pawns });
-            return [prev, new_frame].flat();
+            return [...prev, new_frame];
         }, []);
 
         this.set({ frames });
