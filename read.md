@@ -23,7 +23,7 @@ Próximos pasos:
  - x Cuando se crean frames no se está seteando el id
  - x Agregar id a los peones
  - x Cuando se cree un nuevo frame, que por defecto cargue peones iguales a los del frame anterior
- - Agregar índice visual a cada frame
+ - x Agregar índice visual a cada frame
  - Mejorar vista del peon:
       Agregar opcion para cambiar nombre
       Agregar opcion para cambiar color o setear imagen de fondo
@@ -31,3 +31,5 @@ Próximos pasos:
  - Mejorar estilos
  - Transicion animada entre frames
  - Agregar distintos tipos de peones
+ - Agregar botón de 'guardar' para uqe se guarde en el local storage o en la idb
+ 

@@ -7,4 +7,6 @@ const testBoardData = {
         new Pawn({ name: 3, id: 2 }),
     ],
 };
-export default testBoardData;
+
+const TestEnabled = true;
+export { testBoardData, TestEnabled };
