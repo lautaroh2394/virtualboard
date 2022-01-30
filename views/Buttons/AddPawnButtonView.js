@@ -17,7 +17,7 @@ class AddPawnButtonView extends ButtonView {
     }
 
     icon() {
-        return 'ADDPAWNBUTTONVIEW';
+        return '+';
     }
 }
 

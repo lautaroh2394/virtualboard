@@ -17,7 +17,7 @@ class DownloadJSONButtonView extends ButtonView {
     }
 
     icon() {
-        return 'DOWNLOADJSONBUTTONVIEW';
+        return '⇩';
     }
 }
 

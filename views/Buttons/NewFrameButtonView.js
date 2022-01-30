@@ -13,7 +13,7 @@ class NewFrameButtonView extends ButtonView {
     }
 
     icon() {
-        return 'NEWFRAMEBUTTONVIEW';
+        return '+🗋';
     }
 }
 

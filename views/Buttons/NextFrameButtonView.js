@@ -13,7 +13,7 @@ class NextFrameButtonView extends ButtonView {
     }
 
     icon() {
-        return 'NEXTFRAMEBUTTONVIEW';
+        return '❯';
     }
 }
 

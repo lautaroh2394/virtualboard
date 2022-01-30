@@ -19,8 +19,8 @@ class DefaultButtonsViewFactory {
         return [
             new AddPawnButtonView({ parent: this.parent }),
             new NewFrameButtonView({ parent: this.parent }),
-            new NextFrameButtonView({ parent: this.parent }),
             new PreviousFrameButtonView({ parent: this.parent }),
+            new NextFrameButtonView({ parent: this.parent }),
             new DownloadJSONButtonView({ parent: this.parent }),
             new LoadJSONButtonView({ parent: this.parent }),
         ];

@@ -30,7 +30,7 @@ class LoadJSONButtonView extends ButtonView {
     }
 
     icon() {
-        return 'LOADJSONBUTTONVIEW';
+        return '⇧';
     }
 
     template() {

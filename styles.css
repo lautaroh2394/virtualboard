@@ -2,9 +2,39 @@ html, body, .board-view, .frame-view {
     height: 100%;
 }
 
+body {
+    margin: 0;
+}
+
 .draggable-item {
     background-color: aqua;
     position: absolute;
     z-index: 9;
     cursor: move;
+}
+
+.buttons-view  {
+    background-color: #1a237e;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.board-view {
+    display: flex;
+}
+
+.buttons-view > .button-view {
+    margin: 0.5vw;
+    background-color: #1e88e5;
+    border-radius: 100%;
+    padding: 0vw 0.5vw;
+}
+
+.frame-index-view {
+    position: absolute;
+    bottom: 0;
 }
