@@ -4,10 +4,22 @@ import FigureRepository from '../utils/FigureRepository.js';
 class PawnView extends Backbone.View {
     preinitialize() {
         this.className = 'draggable-item';
+        this.events = {
+            'mouseover span': 'showPawnName',
+            'mouseout span.pawn': 'hidePawnName',
+        };
+    }
+
+    showPawnName(event) {
+        this.$('span.pawn-name').css('display', 'block');
+    }
+
+    hidePawnName(event) {
+        this.$('span.pawn-name').removeAttr('style');
     }
 
     template() {
-        return '<span class="pawn"><%= figure %></span>';
+        return '<span class="pawn-name">PAWNNAME</span><span class="pawn"><%= figure %></span>';
     }
 
     appliedTemplate() {

@@ -24,10 +24,12 @@ Task list:
  - x Cuando se cree un nuevo frame, que por defecto cargue peones iguales a los del frame anterior
  - x Agregar índice visual a cada frame
  - Mejorar vista del peon:
-      Que sea por defecto un circulo lleno
-      
+      x Que sea por defecto un circulo lleno
+      Al hacer hover que muestre el nombre
+
  - Al clickear y soltar peón que aparezca un mini menú con opciones:
      'Nombre': Cambiar nombre
+     'Descripcion': Cambiar descripción
      'Color': Cambiar color
      'Forma': Cambiar forma
 
@@ -41,8 +43,8 @@ Task list:
  - Transicion animada entre frames
  - Agregar distintos tipos de peones
  - Agregar botón de 'guardar' para uqe se guarde en el local storage o en la idb
- - Agregar botón de 'guardar' para uqe se guarde en el local storage o en la idb}
 
 Issue list:
  x Refactorear como se inicia la app. Se está instanciando VirtualBoardView pasándosele un Frame cuando debería ser un Frames con un Frame.
  - Issue con la generación de ids. Lo hace cada frame. Si en un frame se agregan muchos, se vuelve a otro y se crea un peón nuevo el id se repetirá, si se crea un nuevo frame a partir de este cuando se haga la transicion animada dará muchos problemas. Evalura si es mejor hacer estático el método o moverlo al parent Frames para generar ids uqe no se repitan.
+ - Renombrar span con id #span
