@@ -10,11 +10,11 @@ class PawnView extends Backbone.View {
         };
     }
 
-    showPawnName(event) {
+    showPawnName() {
         this.$('span.pawn-name').css('display', 'block');
     }
 
-    hidePawnName(event) {
+    hidePawnName() {
         this.$('span.pawn-name').removeAttr('style');
     }
 

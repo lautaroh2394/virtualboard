@@ -25,7 +25,7 @@ Task list:
  - x Agregar índice visual a cada frame
  - Mejorar vista del peon:
       x Que sea por defecto un circulo lleno
-      Al hacer hover que muestre el nombre
+      x Al hacer hover que muestre el nombre
 
  - Al clickear y soltar peón que aparezca un mini menú con opciones:
      'Nombre': Cambiar nombre
