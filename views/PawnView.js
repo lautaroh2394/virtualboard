@@ -7,7 +7,7 @@ class PawnView extends Backbone.View {
     }
 
     template() {
-        return '<span><%= figure %></span>';
+        return '<span class="pawn"><%= figure %></span>';
     }
 
     appliedTemplate() {

@@ -7,7 +7,6 @@ body {
 }
 
 .draggable-item {
-    background-color: aqua;
     position: absolute;
     z-index: 9;
     cursor: move;
@@ -37,4 +36,8 @@ body {
 .frame-index-view {
     position: absolute;
     bottom: 0;
+}
+
+span.pawn {
+    color: #1a237e;
 }
