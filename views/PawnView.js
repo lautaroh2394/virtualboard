@@ -19,7 +19,7 @@ class PawnView extends Backbone.View {
     }
 
     template() {
-        return '<span class="pawn-name">PAWNNAME</span><span class="pawn"><%= figure %></span>';
+        return '<span class="pawn-name"><%= name %></span><span class="pawn"><%= figure %></span>';
     }
 
     appliedTemplate() {
