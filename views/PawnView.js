@@ -1,4 +1,5 @@
 import Pawn from '../models/Pawn.js';
+import FigureRepository from '../utils/FigureRepository.js';
 
 class PawnView extends Backbone.View {
     preinitialize() {
@@ -6,17 +7,23 @@ class PawnView extends Backbone.View {
     }
 
     template() {
-        return '<span><%= name %></span>';
+        return '<span><%= figure %></span>';
     }
 
     appliedTemplate() {
         const params = {
             name: this.model.get('name'),
+            figure: this.getFigureChar(),
             top: this.model.getTop(),
             left: this.model.getLeft(),
         };
         const template = this.template();
         return _.template(template)(params);
+    }
+
+    getFigureChar() {
+        const figure = this.model.get('figure');
+        return FigureRepository.get(figure);
     }
 
     invalid(opts) {

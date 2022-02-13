@@ -1,4 +1,12 @@
 class Pawn extends Backbone.Model {
+    initialize(opts) {
+        if (!opts.figure) this.setDefaultFigure();
+    }
+
+    setDefaultFigure() {
+        this.set('figure', 'circle');
+    }
+
     getTop() {
         return this.get('top') || 0;
     }
