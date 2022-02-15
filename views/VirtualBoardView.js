@@ -67,6 +67,7 @@ class VirtualBoardView extends Backbone.View {
         this.$el.html('');
         const buttonsViewRender = await this.buttonsView.render();
         this.el.append(buttonsViewRender.el);
+
         const currentFrameView = this.createCurrentFrameView();
         const currentFrameViewRender = await currentFrameView.render();
         this.el.append(currentFrameViewRender.el);

@@ -14,7 +14,10 @@ class CurrentFrameView extends Backbone.View {
         this.$el.html('');
         await this.model.pawns()
             .map(child => new PawnView({ model: child }))
-            .map(async pawnView => this.el.append(pawnView.render().el));
+            .map(async pawnView => {
+                const render = await pawnView.render();
+                this.el.append(render.el);
+            });
 
         const indexView = new IndexView({ id: this.model.get('id') });
         const indexViewRender = await indexView.render();
