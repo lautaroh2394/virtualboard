@@ -10,12 +10,15 @@ class CurrentFrameView extends Backbone.View {
         // Receives a Frame object as model in opts
     }
 
-    render() {
+    async render() {
         this.$el.html('');
-        this.model.pawns()
+        await this.model.pawns()
             .map(child => new PawnView({ model: child }))
-            .map(pawnView => this.el.append(pawnView.render().el));
-        this.el.append((new IndexView({ id: this.model.get('id') })).render().el);
+            .map(async pawnView => this.el.append(pawnView.render().el));
+
+        const indexView = new IndexView({ id: this.model.get('id') });
+        const indexViewRender = await indexView.render();
+        this.el.append(indexViewRender.el);
         return this;
     }
 }

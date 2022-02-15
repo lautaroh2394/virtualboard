@@ -17,8 +17,10 @@ window.addEventListener('load', () => {
         active_frame_index: 0,
     });
     const virtualBoardView = new VirtualBoardView({ model: frames });
-    document.body.append(virtualBoardView.render().el);
-    window.___ = {
-        virtualBoardView,
-    };
+    virtualBoardView.render().then(render => {
+        document.body.append(render.el);
+        window.___ = {
+            virtualBoardView,
+        };
+    });
 });
