@@ -26,12 +26,12 @@ Task list:
  - Mejorar vista del peon:
       x Que sea por defecto un circulo lleno
       x Al hacer hover que muestre el nombre
-
+ - Implementar templates para no escribir el html en las clases de las vistas
  - Al clickear y soltar peón que aparezca un mini menú con opciones:
      'Nombre': Cambiar nombre
      'Descripcion': Cambiar descripción
      'Color': Cambiar color
-     'Forma': Cambiar forma
+     'Forma': Cambiar forma 
 
  - x Página principal con dos opciones: Nueva jugada o Cargar Jugada (Actually done: opciones en barra de herramientas para cargar/descargar)
  - Mejorar estilos
