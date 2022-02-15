@@ -26,7 +26,7 @@ Task list:
  - Mejorar vista del peon:
       x Que sea por defecto un circulo lleno
       x Al hacer hover que muestre el nombre
- - Implementar templates para no escribir el html en las clases de las vistas
+ - x Implementar templates para no escribir el html en las clases de las vistas
  - Al clickear y soltar peón que aparezca un mini menú con opciones:
      'Nombre': Cambiar nombre
      'Descripcion': Cambiar descripción
@@ -44,7 +44,7 @@ Task list:
  - Agregar distintos tipos de peones
  - Agregar botón de 'guardar' para uqe se guarde en el local storage o en la idb
 
-Issue list:
+Issues list:
  x Refactorear como se inicia la app. Se está instanciando VirtualBoardView pasándosele un Frame cuando debería ser un Frames con un Frame.
  - Issue con la generación de ids. Lo hace cada frame. Si en un frame se agregan muchos, se vuelve a otro y se crea un peón nuevo el id se repetirá, si se crea un nuevo frame a partir de este cuando se haga la transicion animada dará muchos problemas. Evalura si es mejor hacer estático el método o moverlo al parent Frames para generar ids uqe no se repitan.
  - Renombrar span con id #span
