@@ -1,3 +1,5 @@
+import TemplateManager from '../utils/TemplateManager.js';
+
 class IndexView extends Backbone.View {
     preinitialize() {
         this.className = 'frame-index-view';
@@ -7,8 +9,12 @@ class IndexView extends Backbone.View {
         this.id = id;
     }
 
-    render() {
-        this.$el.html(`<span>Frame id: ${this.id}</span>`);
+    async template() {
+        return TemplateManager.get('index-view', { id: this.id });
+    }
+
+    async render() {
+        this.$el.html(await this.template());
         return this;
     }
 }

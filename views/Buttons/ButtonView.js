@@ -1,3 +1,5 @@
+import TemplateManager from '../../utils/TemplateManager.js';
+
 class ButtonView extends Backbone.View {
     preinitialize() {
         this.className = 'button-view';
@@ -6,8 +8,12 @@ class ButtonView extends Backbone.View {
         };
     }
 
-    template() {
-        return _.template('<span> <%= icon %> </span>');
+    templateName() {
+        return 'button-view';
+    }
+
+    async template() {
+        return TemplateManager.get(this.templateName(), this.templateParams());
     }
 
     templateParams() {
@@ -20,8 +26,8 @@ class ButtonView extends Backbone.View {
         throw Error('Not implemented');
     }
 
-    render() {
-        this.$el.html(this.template()(this.templateParams()));
+    async render() {
+        this.$el.html(await this.template());
         this.delegateEvents(); // I shouldnt be doing this. render should work seamlessly.
         return this;
     }

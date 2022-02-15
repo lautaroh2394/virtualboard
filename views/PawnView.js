@@ -1,5 +1,6 @@
 import Pawn from '../models/Pawn.js';
 import FigureRepository from '../utils/FigureRepository.js';
+import TemplateManager from '../utils/TemplateManager.js';
 
 class PawnView extends Backbone.View {
     preinitialize() {
@@ -18,19 +19,17 @@ class PawnView extends Backbone.View {
         this.$('span.pawn-name').removeAttr('style');
     }
 
-    template() {
-        return '<span class="pawn-name"><%= name %></span><span class="pawn"><%= figure %></span>';
+    async template() {
+        return TemplateManager.get('pawn-view', this.templateParams());
     }
 
-    appliedTemplate() {
-        const params = {
+    templateParams() {
+        return {
             name: this.model.get('name'),
             figure: this.getFigureChar(),
             top: this.model.getTop(),
             left: this.model.getLeft(),
         };
-        const template = this.template();
-        return _.template(template)(params);
     }
 
     getFigureChar() {
@@ -46,8 +45,8 @@ class PawnView extends Backbone.View {
         if (this.invalid(opts)) throw new Error('Pawn Model required to instanciate PawnView');
     }
 
-    render() {
-        this.$el.html(this.appliedTemplate());
+    async render() {
+        this.$el.html(await this.template());
         this.applyOffset(this.el);
         this.makeDraggable(this.el);
         return this;
