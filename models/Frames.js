@@ -69,7 +69,6 @@ class Frames extends Backbone.Model {
         const newFrame = new Frame({ id: this.generateFrameId(), pawns: currentFramePawns });
         this.insertFrame(newFrame, this.getCurrentFrameIndex() + 1);
         this.nextFrame();
-        Backbone.trigger('Frames:Render');
     }
 
     insertFrame(frame, index) {
