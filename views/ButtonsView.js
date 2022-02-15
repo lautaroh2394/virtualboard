@@ -7,10 +7,11 @@ class ButtonsView extends Backbone.View {
         this.buttonViewList = buttonViewList;
     }
 
-    render() {
-        this.buttonViewList.forEach(buttonView => {
-            this.el.append(buttonView.render().el);
-        });
+    async render() {
+        const results = await Promise.all(
+            this.buttonViewList.map(buttonView => buttonView.render()),
+        );
+        results.forEach(render => this.el.append(render.el));
         return this;
     }
 }

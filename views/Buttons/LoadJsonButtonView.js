@@ -11,7 +11,6 @@ class LoadJSONButtonView extends ButtonView {
 
     loadJSONInput(ev) {
         const file = ev.target.files[0];
-        file.text();
         file.text().then(text => {
             const json = JSON.parse(text);
             Backbone.trigger('LoadJSON', json);
@@ -33,8 +32,8 @@ class LoadJSONButtonView extends ButtonView {
         return '⇧';
     }
 
-    template() {
-        return _.template('<span id=\'span\'> <%= icon %> </span><input hidden type=file id=\'jsonInput\'>');
+    templateName() {
+        return 'load-json-button-view';
     }
 }
 
